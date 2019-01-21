@@ -6,10 +6,11 @@ ParticleSystem PARTICLE_SYSTEM = new ParticleSystem();
 void setup() {
   size(1080, 1080);
   background(255);
+  smooth();
 }
 
 void update() {
-  // if (random(1) > 0.5) return;
+  // if (frameCount % 10 != 0) return;
   Particle p = new Particle();
   float offset = 100;
   p.position(new PVector(
@@ -18,19 +19,28 @@ void update() {
   ));
   float speed = 1;
   p.velocity(new PVector(random(-speed, speed), random(-speed, speed)));
-  // p.life(200);
+  // p.life(1000);
   PARTICLE_SYSTEM.addParticle(p);
 
   PARTICLE_SYSTEM.update();
 }
 
 void draw() {
-  update();
-  fill(255, 10);
-  rect(0, 0, width, height);
+  update();  loadPixels();
+  for (int i = 0; i < width * height; i++) {
+    color c = pixels[i];
+    float coef = 0.05;
+    pixels[i] = color(
+      ceil(lerp(red(c), 255.0, coef)),
+      ceil(lerp(green(c), 255.0, coef)),
+      ceil(lerp(blue(c), 255.0, coef))
+    );
+  }
+  updatePixels();
 	noFill();
 	strokeWeight(0.05);
   stroke(0);
+
   beginShape();
   PARTICLE_SYSTEM.draw();
   endShape();
