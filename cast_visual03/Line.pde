@@ -18,7 +18,7 @@ class Line {
   }
 
   public void draw() {
-    PVector shift = new PVector(cos(angle), sin(angle)).mult(length);
+    PVector shift = new PVector(cos(angle), sin(angle)).mult(length / 2);
     PVector edge1 = PVector.sub(position, shift);
     PVector edge2 = PVector.add(position, shift);
     stroke(vertexColor);

@@ -12,7 +12,7 @@ void setup() {
 
 void update() {
   LINE_SYSTEM.update();
-  // if (frameCount % 10 != 0) return;
+  if (frameCount % 4 != 0) return;
 
   Line l = new Line();
   float offset = 200;
@@ -23,7 +23,9 @@ void update() {
   float speed = 1;
   l.velocity(new PVector(random(-speed, speed), random(-speed, speed)));
   l.angle(random(TWO_PI));
-  l.length(random(400, 600));
+  l.angleVelocity(random(-PI / 200.0, PI / 200.0));
+  l.length(random(10, 300));
+  l.width(random(10, 300));
   // p.life(1000);
   LINE_SYSTEM.addLine(l);
 }

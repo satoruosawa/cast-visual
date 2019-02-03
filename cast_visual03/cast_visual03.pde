@@ -27,7 +27,7 @@ void update() {
   float speed = 1;
   l.velocity(new PVector(random(-speed, speed), random(-speed, speed)));
   l.angle(random(TWO_PI));
-  l.length(random(200, 300));
+  l.length(random(400, 600));
 
   l.vertexColor(color(random(255), random(255), random(255)));
   // l.vertexColor(colorList[int(random(colorList.length))]);
