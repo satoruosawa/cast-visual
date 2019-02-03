@@ -4,6 +4,10 @@ import java.util.*;
 LineSystem LINE_SYSTEM = new LineSystem();
 color baseColor = color(242, 242, 242);
 
+// color[] colorList = {
+//   #8db6ff, #f9ff7d, #f91c71, #7cf2b1
+// };
+
 void setup() {
   size(1080, 1080);
   background(baseColor);
@@ -24,7 +28,9 @@ void update() {
   l.velocity(new PVector(random(-speed, speed), random(-speed, speed)));
   l.angle(random(TWO_PI));
   l.length(random(200, 300));
+
   l.vertexColor(color(random(255), random(255), random(255)));
+  // l.vertexColor(colorList[int(random(colorList.length))]);
   // p.life(1000);
   LINE_SYSTEM.addLine(l);
 }
