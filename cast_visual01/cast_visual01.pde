@@ -2,10 +2,11 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 ParticleSystem PARTICLE_SYSTEM = new ParticleSystem();
+color baseColor = color(242, 242, 242);
 
 void setup() {
   size(1080, 1080);
-  background(255);
+  background(baseColor);
   smooth();
 }
 
@@ -26,14 +27,15 @@ void update() {
 }
 
 void draw() {
-  update();  loadPixels();
+  update();
+  loadPixels();
   for (int i = 0; i < width * height; i++) {
     color c = pixels[i];
     float coef = 0.05;
     pixels[i] = color(
-      ceil(lerp(red(c), 255.0, coef)),
-      ceil(lerp(green(c), 255.0, coef)),
-      ceil(lerp(blue(c), 255.0, coef))
+      ceil(lerp(red(c), red(baseColor), coef)),
+      ceil(lerp(green(c), green(baseColor), coef)),
+      ceil(lerp(blue(c), blue(baseColor), coef))
     );
   }
   updatePixels();
