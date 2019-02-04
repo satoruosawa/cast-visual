@@ -53,6 +53,6 @@ void keyPressed() {
   if (key == 's') {
     Date date = new Date();
     String dateString = new SimpleDateFormat("yyyyMMdd_hhmmss").format(date);
-    save(dateString + ".png");
+    save("captures/" + dateString + ".png");
   }
 }
